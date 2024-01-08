@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-
+// this should import it fine, we are on the server
+import MyApi from "@/api/base";
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -14,6 +15,9 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  // fine as well
+  const myClientOnServerSinceThisIsServerComponent = new MyApi();
+
   return (
     <html lang="en">
       <body className={inter.className}>{children}</body>
